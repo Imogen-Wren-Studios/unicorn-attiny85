@@ -7,7 +7,7 @@
 
 
 #define LED_PIN     0
-#define NUM_LEDS    6
+#define NUM_LEDS    16
 #define BRIGHTNESS  150
 #define LED_TYPE    WS2811
 #define COLOR_ORDER GRB
