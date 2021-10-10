@@ -33,7 +33,7 @@ attiny.menu.clock.internal8.bootloader.extended_fuses=0xff
 attiny.menu.clock.internal8.build.f_cpu=8000000L
 ```
 
-Add the text below to this file underneath the section above.
+Add the text below to this to file, underneath the section above.
 
 ```
 attiny.menu.clock.internal16=16 MHz (internal)
