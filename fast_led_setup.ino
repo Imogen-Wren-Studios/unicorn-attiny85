@@ -22,7 +22,7 @@ void fastled_setup(){
   delay(500);
 //  Serial.println("Chroma Paintbrush Initialised:  Luminescence Matrix Applied.\n Starting Visual Light Imbument\n ");
 
-  if (SOLAR_SYSTEM) {
+  if (PRIDE_ONLY) {
   //  Serial.println("Launching Interplanetary Voyage");
   }
   FastLED.show();

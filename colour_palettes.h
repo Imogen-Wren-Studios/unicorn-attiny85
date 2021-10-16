@@ -7,7 +7,7 @@
 
 
 #include "globals.h"
-#include "planet_palettes.h"
+#include "pride_palettes.h"
 
 
 DEFINE_GRADIENT_PALETTE( tropicalPalette ) {
@@ -152,7 +152,7 @@ CRGBPalette16 select_palette(byte number) {
 //      Serial.println("Green/White");
       break;
     case 7:
-      outputPalette = planet_earth;
+      outputPalette = lesbian;
 //      Serial.println("Planet Earth");
       break;
     case 8:

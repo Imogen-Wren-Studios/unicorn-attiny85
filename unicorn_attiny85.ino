@@ -8,7 +8,7 @@
 
 #define LED_PIN     0
 #define NUM_LEDS    16
-#define BRIGHTNESS  150
+#define BRIGHTNESS  255
 #define LED_TYPE    WS2811
 #define COLOR_ORDER GRB
 CRGBArray <NUM_LEDS> leds;
@@ -34,7 +34,7 @@ CRGBArray <NUM_LEDS> leds;
 // FastLED compact palettes are at the bottom of this file.
 
 #include "colour_palettes.h"
-#include "planet_palettes.h"
+#include "pride_palettes.h"
 
 
 #include "globals.h"
@@ -52,10 +52,12 @@ extern const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM;
 
 uint32_t transition_timer = 45;    // effect transitions are in seconds
 
-#define SOLAR_SYSTEM false      // When true it overwrites switching and only does solar system mode
+#define PRIDE_ONLY true      // When true it overwrites switching and only does pride flags mode
+
+#define PRIDE_ACTIVE true           // When true, pride flag mode is one of the options
 
 #define RANDOMISE_DIRECTION true
-#define START_PALETTE white_light     // Sterile while palette to start with
+#define START_PALETTE RainbowColors_p    // Sterile while palette to start with
 //#define START_PALETTE select_palette(random(0, NUM_FX));
 
 
@@ -68,11 +70,13 @@ uint32_t transition_timer = 45;    // effect transitions are in seconds
 
 
 
-
+uint32_t animation_delay = 33;   // 33mS delay = 30 frames per second
 
 
 
 void setup() {
+
+  animation_delay = calculate_framerate_delay(UPDATES_PER_SECOND);   // Sets up framerate for new smoothed animation style
 
   fastled_setup();
 
@@ -119,7 +123,7 @@ void loop() {
   switchPalette();                // Switches colour palette periodically (actually only changes nextPalette, which is blended into currentPalette u
 
 
-  if (solar_system_mode or SOLAR_SYSTEM) {
+  if (solar_system_mode or PRIDE_ONLY) {
     // No blending between palettes, apply fadethrough used instead (although this also can be called for other palettes so is in main loop)
   } else {
     nblendPaletteTowardPalette(currentPalette, nextPalette, 12);    // slow blend between palettes
@@ -128,7 +132,7 @@ void loop() {
 
   apply_palette();               //applies palette to LED buffer
 
-  apply_fadethrough();               // Changes master brightness in response to fadethrough triggers
+  apply_fadethrough();               // Changes master brightness in response to fadethrough triggers (Only active if fadethrough is true)
 
   FastLED.show();
   FastLED.delay(1000 / UPDATES_PER_SECOND);
@@ -313,7 +317,7 @@ void SetupPurpleAndGreenPalette() {
 
 
 
-
+/*
 
 // This example shows how to set up a static color palette
 // which is stored in PROGMEM (flash), which is almost always more
@@ -341,7 +345,7 @@ const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM =
   CRGB::Black
 };
 
-
+*/
 
 
 

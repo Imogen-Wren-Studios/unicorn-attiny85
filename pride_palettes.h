@@ -12,12 +12,12 @@
 */
 
 
-#ifndef planet_palettes_h
-#define planet_palettes_h
+#ifndef pride_palettes_h
+#define pride_palettes_h
 
 
 
-DEFINE_GRADIENT_PALETTE( the_sun) {
+DEFINE_GRADIENT_PALETTE( pride) {
   0,        255, 255, 255,    /* at index 0, blue(0,0,0) */
   5,         255, 255, 255,     /* at index 0, blue(0,0,0) */
   10,           255, 255, 0,    /* at index 0, blue(0,0,0) */
@@ -35,7 +35,7 @@ DEFINE_GRADIENT_PALETTE( the_sun) {
 };
 
 
-DEFINE_GRADIENT_PALETTE( planet_mercury) {
+DEFINE_GRADIENT_PALETTE( lesbian) {
   0,        169, 136, 25,    /* at index 0, blue(0,0,0) */
   5,        182,  155, 25,    /* at index 0, blue(0,0,0) */
   10,          239, 231, 40,  /* at index 0, blue(0,0,0) */
@@ -53,7 +53,7 @@ DEFINE_GRADIENT_PALETTE( planet_mercury) {
 };
 
 
-DEFINE_GRADIENT_PALETTE( planet_venus) {
+DEFINE_GRADIENT_PALETTE( gay) {
   0,        190, 190, 120,    /* at index 0, blue(0,0,0) */
   5,        230,  200, 70,    /* at index 0, blue(0,0,0) */
   10,       230,  200, 10,    /* at index 0, blue(0,0,0) */
@@ -73,7 +73,7 @@ DEFINE_GRADIENT_PALETTE( planet_venus) {
 
 
 
-DEFINE_GRADIENT_PALETTE( planet_earth) {
+DEFINE_GRADIENT_PALETTE( bisexual) {
   0,        19, 21, 255,    /* at index 0, blue(0,0,0) */
   7,       20, 100, 255,    /* at index 0, blue(0,0,0) */
   10,       255,  255, 255,    /* at index 0, cloud(0,0,0) */
@@ -94,7 +94,7 @@ DEFINE_GRADIENT_PALETTE( planet_earth) {
 
 
 
-DEFINE_GRADIENT_PALETTE( the_moon) {
+DEFINE_GRADIENT_PALETTE(pan) {
   0,        0,  0, 0,    /* at index 0, blue(0,0,0) */
   5,        100,  100, 100,    /* at index 0, blue(0,0,0) */
   10,       20,  20, 20,    /* at index 0, blue(0,0,0) */
@@ -114,7 +114,7 @@ DEFINE_GRADIENT_PALETTE( the_moon) {
 
 
 // Would prefer an HSV way of specifying this.
-DEFINE_GRADIENT_PALETTE( planet_mars) {
+DEFINE_GRADIENT_PALETTE( trans) {
   0,        255, 140, 0,    /* at index 0, blue(0,0,0) */
   8,        240,  20, 0,    /* at index 0, blue(0,0,0) */
   10,       200,  170, 100,    /* at index 0, blue(0,0,0) */
@@ -134,7 +134,7 @@ DEFINE_GRADIENT_PALETTE( planet_mars) {
 
 
 
-DEFINE_GRADIENT_PALETTE( planet_jupiter) {
+DEFINE_GRADIENT_PALETTE(ace) {
   0,         140,   87,    20,     // mud   0
   40,        180,    134,    20 ,    //gravel 1
   42,         220,    140,   20 ,      // dirty orange (very thin) 2
@@ -156,7 +156,7 @@ DEFINE_GRADIENT_PALETTE( planet_jupiter) {
 
 
 
-DEFINE_GRADIENT_PALETTE(planet_saturn) {
+DEFINE_GRADIENT_PALETTE(aero) {
   0,         131,   87,    20,     // mud   0
   40,        166,    134,    20 ,    //gravel 1
   50,         207,    140,   20 ,      // dirty orange (very thin) 2
@@ -177,7 +177,7 @@ DEFINE_GRADIENT_PALETTE(planet_saturn) {
 };
 
 
-DEFINE_GRADIENT_PALETTE(planet_uranus) {
+DEFINE_GRADIENT_PALETTE(inter) {
   0,         0,   200,    255,     // Blue  0
   40,        0,    0,    255 ,    //gravel 1
   42,         0,    0,   255 ,      // dirty orange (very thin) 2
@@ -199,7 +199,7 @@ DEFINE_GRADIENT_PALETTE(planet_uranus) {
 
 
 
-DEFINE_GRADIENT_PALETTE(planet_neptune) {
+DEFINE_GRADIENT_PALETTE(demi) {
   0,         0,   0,    255,     // Blue  0
   40,        0,    0,    255 ,    //gravel 1
   42,         0,    0,   255 ,      // dirty orange (very thin) 2
@@ -222,7 +222,7 @@ DEFINE_GRADIENT_PALETTE(planet_neptune) {
 
 
 
-DEFINE_GRADIENT_PALETTE(planet_pluto) {
+DEFINE_GRADIENT_PALETTE(queer) {
   0,         255,  255,    255,     // Blue  0
   30,        220, 43, 22,    //gravel 1
   45,         65, 34, 29,       // dirty orange (very thin) 2
@@ -263,73 +263,73 @@ DEFINE_GRADIENT_PALETTE( black_black) {
 
 
 
-byte current_planet = 0;
+byte current_flag = 0;
 
-CRGBPalette16 select_planet() {
+CRGBPalette16 select_flag() {
 
   CRGBPalette16 outputPalette;
 
 
-  switch (current_planet) {
+  switch (current_flag) {
     case 0:
-      outputPalette = the_sun;
- //     Serial.println("The Sun");
-//      Serial.println("Entering Heliocentric Orbit");
+      outputPalette = pride;
+      //     Serial.println("The Sun");
+      //      Serial.println("Entering Heliocentric Orbit");
       break;
     case 1:
-      outputPalette = planet_mercury;
- //     Serial.println("Mercury");
+      outputPalette = lesbian;
+      //     Serial.println("Mercury");
       break;
     case 2:
-      outputPalette = planet_venus;
- //     Serial.println("Venus");
+      outputPalette = gay;
+      //     Serial.println("Venus");
       break;
     case 3:
-      outputPalette = planet_earth;
-//      Serial.println("Earth");
+      outputPalette = bisexual;
+      //      Serial.println("Earth");
       break;
     case 4:
-      outputPalette = the_moon;
-//      Serial.println("The Moon");
+      outputPalette = pan;
+      //      Serial.println("The Moon");
       break;
     case 5:
-      outputPalette = planet_mars;
- //     Serial.println("Mars");
+      outputPalette = trans;
+      //     Serial.println("Mars");
       break;
     case 6:
-      outputPalette = planet_jupiter;
-//      Serial.println("Jupiter");
+      outputPalette = ace;
+      //      Serial.println("Jupiter");
       break;
     case 7:
-      outputPalette = planet_saturn;
- //     Serial.println("Saturn");
+      outputPalette = aero;
+      //     Serial.println("Saturn");
       break;
     case 8:
-      outputPalette = planet_uranus;
- //     Serial.println("Uranus");
+      outputPalette = inter;
+      //     Serial.println("Uranus");
       break;
     case 9:
-      outputPalette = planet_neptune;
-//      Serial.println("Neptune");
+      outputPalette = demi;
+      //      Serial.println("Neptune");
       break;
     case 10:
-      outputPalette = planet_pluto;
-//      Serial.println("Pluto");
+      outputPalette = queer;
+      //      Serial.println("Pluto");
       break;
     default:
- //     Serial.println("Random");
+      //     Serial.println("Random");
       for ( int i = 0; i < 16; i++) {
         outputPalette[i] = CHSV( random8(), 255, random8());
       }
       break;
   }
   //return green_white;
-  current_planet++;
+  current_flag++;
 
-  if (current_planet >= 12) {
-    current_planet = 0;
+  if (current_flag >= 12) {
+    current_flag = 0;
     solar_system_mode = false;    // Once we have finished our flight around the solar system, return to colour palletes
-//    Serial.println("Colour Palette Mode");
+    //    Serial.println("Colour Palette Mode");
 
   }
   return outputPalette;
