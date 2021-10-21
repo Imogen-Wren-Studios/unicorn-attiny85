@@ -74,7 +74,16 @@ uint32_t animation_delay = 33;   // 33mS delay = 30 frames per second
 
 
 
+#define BUTTON_ADC_PIN A7
+
+#include "tinyButton.h"
+
+tinyButton buttons(BUTTON_ADC_PIN);
+
+
 void setup() {
+
+  buttons.begin();
 
   animation_delay = calculate_framerate_delay(UPDATES_PER_SECOND);   // Sets up framerate for new smoothed animation style
 
@@ -111,6 +120,7 @@ void setup() {
 
 void loop() {
 
+ buttons.tinyButtonLoop();
 
   if (RANDOMISE_DIRECTION ) {
     randomise_led_directions();    // Changes the direction the LEDs are painted in
@@ -137,9 +147,9 @@ void loop() {
   FastLED.show();
   FastLED.delay(1000 / UPDATES_PER_SECOND);
 
- // if (DEBUG_DELAY) {
- //   delay(DEBUG_DELAY_TIME);
- // }
+  // if (DEBUG_DELAY) {
+  //   delay(DEBUG_DELAY_TIME);
+  // }
 
 
 }
@@ -319,12 +329,12 @@ void SetupPurpleAndGreenPalette() {
 
 /*
 
-// This example shows how to set up a static color palette
-// which is stored in PROGMEM (flash), which is almost always more
-// plentiful than RAM.  A static PROGMEM palette like this
-// takes up 64 bytes of flash.
-const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM =
-{
+  // This example shows how to set up a static color palette
+  // which is stored in PROGMEM (flash), which is almost always more
+  // plentiful than RAM.  A static PROGMEM palette like this
+  // takes up 64 bytes of flash.
+  const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM =
+  {
   CRGB::Red,
   CRGB::Gray, // 'white' is too bright compared to red and blue
   CRGB::Blue,
@@ -343,7 +353,7 @@ const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM =
   CRGB::Blue,
   CRGB::Black,
   CRGB::Black
-};
+  };
 
 */
 
