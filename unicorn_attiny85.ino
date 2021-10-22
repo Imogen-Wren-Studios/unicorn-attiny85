@@ -114,35 +114,37 @@ void setup() {
 
 
 
-
+uint8_t animationMode = 0;   // When 0 animation mode is "stock" running through pallets as normal 1 - 4 will trigger various emote animations
 
 
 
 void loop() {
 
- buttons.tinyButtonLoop();
+int buttonState = buttons.tinyButtonLoop();
+
+animationMode = buttonState;
 
   if (RANDOMISE_DIRECTION ) {
     randomise_led_directions();    // Changes the direction the LEDs are painted in
     //  randomise_colour_direction();   // < Dont like the effect this has meant to randomise the direction of the colour wheel, but causes jumps and skips
   }
 
-  switchProgram();
+ // switchProgram();     // Removed for simplicity. Program now only does 1 program 
 
 
   switchPalette();                // Switches colour palette periodically (actually only changes nextPalette, which is blended into currentPalette u
 
 
-  if (solar_system_mode or PRIDE_ONLY) {
+ // if (solar_system_mode or PRIDE_ONLY) {
     // No blending between palettes, apply fadethrough used instead (although this also can be called for other palettes so is in main loop)
-  } else {
+ // } else {
     nblendPaletteTowardPalette(currentPalette, nextPalette, 12);    // slow blend between palettes
-  }
-
+ // }
+///
 
   apply_palette();               //applies palette to LED buffer
 
-  apply_fadethrough();               // Changes master brightness in response to fadethrough triggers (Only active if fadethrough is true)
+ // apply_fadethrough();     No longer needed as not fadingthrough          // Changes master brightness in response to fadethrough triggers (Only active if fadethrough is true)
 
   FastLED.show();
   FastLED.delay(1000 / UPDATES_PER_SECOND);

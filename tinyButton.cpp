@@ -69,7 +69,7 @@ uint8_t tinyButton::buttonArray() {
 
 void tinyButton::tinyButtonLoop() {
 
- activeButton = tinyButton::deriveButton(): // Use this line to return ints
+ activeButton = tinyButton::deriveButton(): // Use this line to return ints 1 - 4 if button is pressed 0 button is unpressed
   
  // tinyButton::buttonArray();   // Use this line to return bits
 

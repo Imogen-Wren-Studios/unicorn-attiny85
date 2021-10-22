@@ -194,7 +194,7 @@ void switchPalette() {
 
 
 
-
+/*
 autoDelay programDelay;
 
 // Function to change program from colours to planets periodically (10 mins?)
@@ -212,8 +212,7 @@ void switchProgram() {
     }
   }
 }
-
-
+*/
 
 
 
