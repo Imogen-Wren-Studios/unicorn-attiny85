@@ -101,6 +101,19 @@ DEFINE_GRADIENT_PALETTE( white_light ) {
 
 
 
+DEFINE_GRADIENT_PALETTE( angry_red ) {
+  0,        255, 0, 0,    /* at index 0, orange(0,0,0) */
+  50,       255,  100, 0,    /* at index 0, orange(0,0,0) */
+  110,       255,  0, 0,    /* at index 0, orange(0,0,0) */
+  120,       255,  100, 10,    /* at index 0, orange(0,0,0) */
+  130,       255,  0, 5,    /* at index 0, orange(0,0,0) */
+  150,     255,  150,  5,    /* at index 0, orange(0,0,0) */
+  170,    255,  40,  10, /* at index 255, white(255,255,255) */
+  190,    255,  0,  1, /* at index 255, white(255,255,255) */
+  255,    255,  50, 0   /* at index 0, orange(0,0,0) */       // last entry must be for index 255
+};
+
+
 
 // This function fills the palette with totally random colors.
 void SetupTotallyRandomPalette() {

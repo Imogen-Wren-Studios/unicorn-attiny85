@@ -8,7 +8,7 @@
 #endif
 
 
-#define BUTTON_PIN A7
+#define BUTTON_PIN A1
 
 
 class tinyButton {
@@ -36,11 +36,11 @@ class tinyButton {
 
     uint8_t buttonArray();
 
-    void tinyButtonLoop();
+    uint8_t tinyButtonLoop();
 
   private:
 
-    int buttonPin = A7;
+    int buttonPin = A1;
     uint8_t buttonStates[4];            // Stores the recent history of the button - Private as no need to access this outside of library (hmmmm)
 
 };

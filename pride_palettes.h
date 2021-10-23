@@ -328,7 +328,7 @@ CRGBPalette16 select_flag() {
 
   if (current_flag >= 12) {
     current_flag = 0;
-    solar_system_mode = false;    // Once we have finished our flight around the solar system, return to colour palletes
+   // solar_system_mode = false;    // Once we have finished our flight around the solar system, return to colour palletes
     //    Serial.println("Colour Palette Mode");
 
   }

@@ -5,7 +5,7 @@
 
 
 void tinyButton::begin() {
-  Serial.println("tinyButton Libary");
+//  Serial.println("tinyButton Libary");
   delay(1000);
 
 }
@@ -67,9 +67,9 @@ uint8_t tinyButton::buttonArray() {
 }
 
 
-void tinyButton::tinyButtonLoop() {
+uint8_t tinyButton::tinyButtonLoop() {
 
- activeButton = tinyButton::deriveButton(): // Use this line to return ints 1 - 4 if button is pressed 0 button is unpressed
+ int activeButton = tinyButton::deriveButton(); // Use this line to return ints 1 - 4 if button is pressed 0 button is unpressed
   
  // tinyButton::buttonArray();   // Use this line to return bits
 

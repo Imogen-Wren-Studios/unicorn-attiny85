@@ -10,7 +10,7 @@
 
 // User Options
 
-bool solar_system_mode = false;     // Sets solar system or not mode (switches automatically) This setting picks the start function
+
 
 
 

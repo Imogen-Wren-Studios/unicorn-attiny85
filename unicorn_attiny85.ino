@@ -16,6 +16,8 @@ CRGBArray <NUM_LEDS> leds;
 #define UPDATES_PER_SECOND 30
 #define HUE_STEPS 5                // Number of steps to advance through palette between each for loop. Origionally 3
 
+uint8_t updates_per_second = 30;
+
 // This example shows several ways to set up and use 'palettes' of colors
 // with FastLED.
 //
@@ -39,8 +41,8 @@ CRGBArray <NUM_LEDS> leds;
 
 #include "globals.h"
 
-extern CRGBPalette16 myRedWhiteBluePalette;
-extern const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM;
+//extern CRGBPalette16 myRedWhiteBluePalette;
+//extern const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM;
 
 
 // set up instance of palette
@@ -52,29 +54,31 @@ extern const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM;
 
 uint32_t transition_timer = 45;    // effect transitions are in seconds
 
-#define PRIDE_ONLY true      // When true it overwrites switching and only does pride flags mode
 
-#define PRIDE_ACTIVE true           // When true, pride flag mode is one of the options
 
 #define RANDOMISE_DIRECTION true
+
 #define START_PALETTE RainbowColors_p    // Sterile while palette to start with
 //#define START_PALETTE select_palette(random(0, NUM_FX));
 
 
+
 #define FADE_THROUGH_DELAY 1   // delay time between brightness changes during crossfade through black effect (millis)
-#define PAUSE_BLACK_DELAY 100    // delay time to pause at black between crossfade for cleaner scene change effect
+#define PAUSE_BLACK_DELAY 1    // delay time to pause at black between crossfade for cleaner scene change effect
 
-#define PROGRAM_DELAY 10   // Delay to switch progams in minuites
+#include "colour_functions.h"
 
+bool transitionActive = false;
+bool animationTriggered = false;
 
-
-
-
-uint32_t animation_delay = 33;   // 33mS delay = 30 frames per second
-
+uint32_t animationEndTime;
 
 
-#define BUTTON_ADC_PIN A7
+//uint32_t animation_delay = 33;   // 33mS delay = 30 frames per second
+
+
+
+#define BUTTON_ADC_PIN A1
 
 #include "tinyButton.h"
 
@@ -85,7 +89,6 @@ void setup() {
 
   buttons.begin();
 
-  animation_delay = calculate_framerate_delay(UPDATES_PER_SECOND);   // Sets up framerate for new smoothed animation style
 
   fastled_setup();
 
@@ -120,38 +123,143 @@ uint8_t animationMode = 0;   // When 0 animation mode is "stock" running through
 
 void loop() {
 
-int buttonState = buttons.tinyButtonLoop();
+  int buttonState = buttons.tinyButtonLoop();
 
-animationMode = buttonState;
+  animationMode = buttonState;
+
+  if (animationMode == 0) {
+    // Normal Operation Cycles through Pride Colours
+
+    if (transitionActive or animationTriggered) {
+      exitAnimation();// Picks a new pallet to exit from an animation
+      exitTransition();
+    } else {
+      normalMode();
+    }
+
+
+  } else if (animationMode == 1) {
+
+    angryMode();
+
+  } else if (animationMode == 2) {
+
+    rainbowFart();
+
+  } else if (animationMode == 3) {
+
+    powerUp();
+
+  } else if (animationMode == 4) {
+
+    cantChoose();
+
+  }
 
   if (RANDOMISE_DIRECTION ) {
     randomise_led_directions();    // Changes the direction the LEDs are painted in
     //  randomise_colour_direction();   // < Dont like the effect this has meant to randomise the direction of the colour wheel, but causes jumps and skips
   }
 
- // switchProgram();     // Removed for simplicity. Program now only does 1 program 
 
+  apply_fadethrough();
 
-  switchPalette();                // Switches colour palette periodically (actually only changes nextPalette, which is blended into currentPalette u
-
-
- // if (solar_system_mode or PRIDE_ONLY) {
-    // No blending between palettes, apply fadethrough used instead (although this also can be called for other palettes so is in main loop)
- // } else {
-    nblendPaletteTowardPalette(currentPalette, nextPalette, 12);    // slow blend between palettes
- // }
-///
 
   apply_palette();               //applies palette to LED buffer
 
- // apply_fadethrough();     No longer needed as not fadingthrough          // Changes master brightness in response to fadethrough triggers (Only active if fadethrough is true)
-
   FastLED.show();
-  FastLED.delay(1000 / UPDATES_PER_SECOND);
-
-  // if (DEBUG_DELAY) {
-  //   delay(DEBUG_DELAY_TIME);
-  // }
+  FastLED.delay(1000 / updates_per_second);
 
 
+
+}
+
+#define NORMAL_BLEND_SPEED 12
+
+void normalMode() {
+  updates_per_second = 30;
+
+  nblendPaletteTowardPalette(currentPalette, nextPalette, NORMAL_BLEND_SPEED);    // slow blend between palettes
+  switchPalette();                // Switches colour palette periodically (actually only changes nextPalette, which is blended into currentPalette u
+}
+
+
+#define ANIMATION_BLEND_SPEED 128
+
+
+
+void angryMode() {
+  updates_per_second = 100;
+
+  animationTriggered = true;
+
+  nextPalette = angry_red;
+
+  nblendPaletteTowardPalette(currentPalette, nextPalette, ANIMATION_BLEND_SPEED);    // slow blend between palettes
+
+}
+
+
+void rainbowFart() {
+  updates_per_second = 500;
+
+  animationTriggered = true;
+
+  nextPalette =  RainbowColors_p;
+
+  nblendPaletteTowardPalette(currentPalette, nextPalette, ANIMATION_BLEND_SPEED);    // slow blend between palettes
+}
+
+
+void powerUp() {
+  updates_per_second = 400;
+
+  animationTriggered = true;
+
+  ledDirection = false;
+
+  // currentPalette = hotpink_blue;
+  nextPalette =  hotpink_blue;
+
+  nblendPaletteTowardPalette(currentPalette, nextPalette, ANIMATION_BLEND_SPEED);    // slow blend between palettes
+
+}
+
+
+void cantChoose() {
+  updates_per_second = 60;
+
+  animationTriggered = true;
+
+  // currentPalette = hotpink_blue;
+  nextPalette =  raggaPalette;
+
+  nblendPaletteTowardPalette(currentPalette, nextPalette, ANIMATION_BLEND_SPEED);    // slow blend between palettes
+
+}
+
+
+
+
+void exitAnimation() {                      // Called once when animation ends
+  if (animationTriggered) {
+    // fadetoblack = true;
+    currentPalette = nextPalette;
+    nextPalette = select_palette(random(0, NUM_FX));
+    animationTriggered = false;
+    transitionActive = true;
+    animationEndTime = millis();
+  }
+}
+
+#define TRANSITION_TIME 1000
+
+void exitTransition() {                          // Stays true untill pallette has been switched back to normal
+  if (transitionActive) {
+    // fadetoblack = true;
+    nblendPaletteTowardPalette(currentPalette, nextPalette, ANIMATION_BLEND_SPEED);    // slow blend between palettes
+    if (millis() - animationEndTime >= TRANSITION_TIME) {
+      transitionActive = false;
+    }
+  }
 }

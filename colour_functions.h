@@ -6,7 +6,35 @@
 
 */
 
+uint8_t startIndex = 0;
 
+
+int16_t index_addr = 1;
+
+
+bool ledDirection = true;         // Sets the LEDs to update in a positive direction if true, or reverse direction if false
+
+int hue_steps = 3;
+uint32_t hue_shift_timing = 5000;
+
+
+// Utilities
+
+void FillLEDsFromPaletteColors( uint8_t colorIndex) {
+
+  // if (ledDirection) {
+  for ( int i = 0; i < NUM_LEDS; i++) {
+    leds[i] = ColorFromPalette( currentPalette, colorIndex, BRIGHTNESS, currentBlending);
+
+    if (ledDirection) {
+      colorIndex += hue_steps;
+    } else {
+      colorIndex += hue_steps;      // Tried -= but made more jumps not good.
+
+    }
+  }
+
+}
 
 
 
@@ -67,13 +95,7 @@ void apply_fadethrough() {
 
 
 
-uint8_t startIndex = 0;
 
-
-int16_t index_addr = 1;
-
-
-bool ledDirection = true;         // Sets the LEDs to update in a positive direction if true, or reverse direction if false
 
 // Fills led buffer from palette
 void apply_palette() {
@@ -86,7 +108,7 @@ void apply_palette() {
 
   // This function currently ignores colour direction updates?!
 
-  FillLEDsFromPaletteColors(startIndex);  // NOT SMOOTH ENOUGH
+  FillLEDsFromPaletteColors(startIndex);  // Current Best Method Imogen 23/10/2021
 
   //  fillLEDS_smoothly(startIndex);     // Smoother way of doing it, hopefully. Also simpler
 }
@@ -101,8 +123,7 @@ void apply_palette() {
 
 autoDelay hueShiftDelay;
 
-int hue_steps = 3;
-uint32_t hue_shift_timing = 5000;
+
 
 
 void randomise_colour_direction() {
@@ -174,125 +195,14 @@ void randomise_led_directions() {
 autoDelay shift_effect;
 
 
-// Cycles through banks of palettes based on program type
+// Cycles through banks of palettes // NOW ONLY CALLED IN "Normal Mode"
 void switchPalette() {
   if (shift_effect.secondsDelay(transition_timer)) {
     //    Serial.println("Fading into New Palette");
 
     currentPalette = nextPalette;
 
-    if ((solar_system_mode or PRIDE_ONLY) and PRIDE_ACTIVE) {
-      fadetoblack = true;     // triggers the apply_fade function
-      nextPalette = select_flag();    // next palette now is not used because crossfading function is removed HOWEVER, we can now fade to black, then place nextPallet into currentPallet before the fade in,
-      // making the crossover seamless
-    } else {
-      nextPalette = select_palette(random(0, NUM_FX));
-    }
+
+    nextPalette = select_palette(random(0, NUM_FX));
   }
-}
-
-
-
-
-/*
-autoDelay programDelay;
-
-// Function to change program from colours to planets periodically (10 mins?)
-
-void switchProgram() {
-  if (programDelay.minutesDelay(PROGRAM_DELAY)) {
-    if (solar_system_mode) {
-      //   Serial.print("Timer For Colour Mode");
-      // solar_system_mode = false;                         // Not switched here because it loops once through and changes elsewhere
-      //  Serial.print("Colour Palette Mode");
-    } else {
-      solar_system_mode = true;
-      current_flag = 0;     // reset current planet to the sun
-      //    Serial.print("Solar System Mode");
-    }
-  }
-}
-*/
-
-
-
-
-
-
-// Utilities
-
-void FillLEDsFromPaletteColors( uint8_t colorIndex) {
-
-  // if (ledDirection) {
-  for ( int i = 0; i < NUM_LEDS; i++) {
-    leds[i] = ColorFromPalette( currentPalette, colorIndex, BRIGHTNESS, currentBlending);
-
-    if (ledDirection){
-    colorIndex += hue_steps;
-    } else {
-      colorIndex += hue_steps;      // Tried -= but made more jumps not good. 
-
-
-
-
-
-      
-    }
-  }
-  /*
-    } else {                                                                                              // Same for loop as before but runs in reverse order
-      for ( int i = NUM_LEDS; i >= 0; i--) {
-        leds[i] = ColorFromPalette( currentPalette, colorIndex, BRIGHTNESS, currentBlending);
-        colorIndex += hue_steps;
-
-      }
-    }
-
-  */
-}
-
-
-// This could be smoother, by instead setting up a delay and if the delay has passed, updating the leds using the colour index, instead of a for loop
-
-int32_t led_index = 0;   // New global tracks the current LED, so when the direction reverses the animation starts and stops in the same place.
-
-autoDelay indexDelay;
-
-//#define ANIMATION_SMOOTHING dont need this, use UPDATES_PER_SECOND which will calculate a delay time to achieve that framerate
-
-
-
-void fillLEDS_smoothly(uint8_t colorIndex) {   // Unfortunatly this is not smooth. Not smooth at all.
-
-  // This needs some kind of delay now for smoothness
-
-  if (indexDelay.millisDelay(animation_delay)) {
-    leds[led_index] = ColorFromPalette( currentPalette, colorIndex, BRIGHTNESS, currentBlending);
-
-
-    if (ledDirection) {
-      led_index = led_index + 1;
-    } else {
-      led_index = led_index - 1;
-    }
-
-    if (led_index < 0) {
-      led_index = NUM_LEDS;
-      colorIndex += hue_steps;
-    } else if (led_index >= NUM_LEDS) {
-      led_index = 0;
-      colorIndex += hue_steps;                    // Moved this here to make sure it only updates at the end of any specific loop.
-    } else {
-      //  led_index = 0;
-      // Default / exception condition
-    }
-  }
-
-}
-
-uint32_t calculate_framerate_delay(uint16_t framerate) {
-
-  uint32_t animation_delay = (1000 / UPDATES_PER_SECOND) / NUM_LEDS; // / NUM_LEDS because the framerate is usually how long the whole thing takes to update
-
-  return animation_delay;
 }
