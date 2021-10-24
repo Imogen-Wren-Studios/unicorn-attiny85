@@ -123,6 +123,15 @@ void SetupTotallyRandomPalette() {
 }
 
 
+// This function fills the palette with totally random colors.
+CRGBPalette16 returnRandomPalette() {
+  CRGBPalette16  randomPalette;
+  for ( int i = 0; i < 16; i++) {
+    randomPalette[i] = CHSV( random8(), 255, 255);
+  }
+  return randomPalette;
+}
+
 
 #define NUM_FX 17
 
@@ -138,74 +147,74 @@ CRGBPalette16 select_palette(byte number) {
   switch (number) {
     case 0:
       outputPalette = tropicalPalette;
-  //    Serial.println("Tropical");
+      //    Serial.println("Tropical");
       break;
     case 1:
       outputPalette = raggaPalette;
-  //    Serial.println("Ragga");
+      //    Serial.println("Ragga");
       break;
     case 2:
       outputPalette = transPalette;
- //     Serial.println("Trans");
+      //     Serial.println("Trans");
       break;
     case 3:
       outputPalette = biPalette;
-  //    Serial.println("Bi");
+      //    Serial.println("Bi");
       break;
     case 4:
       outputPalette = orange_white;
- //     Serial.println("Orange/White");
+      //     Serial.println("Orange/White");
       break;
     case 5:
       outputPalette = blue_white;
- //     Serial.println("blue_white");
+      //     Serial.println("blue_white");
       break;
     case 6:
       outputPalette = green_white;
-//      Serial.println("Green/White");
+      //      Serial.println("Green/White");
       break;
     case 7:
       outputPalette = lesbian;
-//      Serial.println("Planet Earth");
+      //      Serial.println("Planet Earth");
       break;
     case 8:
       outputPalette = RainbowColors_p;
-//      Serial.println("Rainbow Colours");
+      //      Serial.println("Rainbow Colours");
       break;
     case 9:
       outputPalette = RainbowStripeColors_p;
-//      Serial.println("Rainbow Stripe Colours");
+      //      Serial.println("Rainbow Stripe Colours");
       break;
     case 10:
-      outputPalette = CloudColors_p;
- //     Serial.println("Cloud Colours");
+      outputPalette = returnRandomPalette();
+      //     Serial.println("Cloud Colours");
       break;
     case 11:
       outputPalette = PartyColors_p;
-//      Serial.println("Party Colours");
+      //      Serial.println("Party Colours");
       break;
     case 12:
-      outputPalette = LavaColors_p;
- //     Serial.println("Lava Colours");
+      outputPalette = enby;
+      //     Serial.println("Lava Colours");
       break;
     case 13:
-      outputPalette = OceanColors_p;
- //     Serial.println("Ocean Colours");
+      outputPalette = returnRandomPalette();
+      //     Serial.println("Ocean Colours");
       break;
     case 14:
-      outputPalette = ForestColors_p;
- //     Serial.println("Forest Colours");
+      outputPalette = returnRandomPalette();
+      //     Serial.println("Forest Colours");
       break;
     case 15:
-      outputPalette = HeatColors_p;
-//      Serial.println("Heat Map Colours");
+      outputPalette = returnRandomPalette();
+      //      Serial.println("Heat Map Colours");
       break;
     case 16:
       outputPalette = hotpink_blue;
-//      Serial.println("Hotpink Blue");
+      //      Serial.println("Hotpink Blue");
       break;
     default:
- //     Serial.println("Random");
+      //     Serial.println("Random");
       for ( int i = 0; i < 16; i++) {
         outputPalette[i] = CHSV( random8(), 255, random8());
       }

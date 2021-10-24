@@ -189,7 +189,7 @@ void normalMode() {
 
 
 void angryMode() {
-  updates_per_second = 100;
+  updates_per_second = 200;
 
   animationTriggered = true;
 
@@ -212,14 +212,15 @@ void rainbowFart() {
 
 
 void powerUp() {
-  updates_per_second = 400;
+  updates_per_second = 300;
 
   animationTriggered = true;
 
   ledDirection = false;
 
   // currentPalette = hotpink_blue;
-  nextPalette =  hotpink_blue;
+  nextPalette = enby;
+  //nextPalette = lesbian;
 
   nblendPaletteTowardPalette(currentPalette, nextPalette, ANIMATION_BLEND_SPEED);    // slow blend between palettes
 
@@ -227,12 +228,12 @@ void powerUp() {
 
 
 void cantChoose() {
-  updates_per_second = 60;
+  updates_per_second = 500;
 
   animationTriggered = true;
 
   // currentPalette = hotpink_blue;
-  nextPalette =  raggaPalette;
+  nextPalette =   hotpink_blue;
 
   nblendPaletteTowardPalette(currentPalette, nextPalette, ANIMATION_BLEND_SPEED);    // slow blend between palettes
 

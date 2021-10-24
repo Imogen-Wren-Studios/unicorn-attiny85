@@ -36,20 +36,14 @@ DEFINE_GRADIENT_PALETTE( pride) {
 
 
 DEFINE_GRADIENT_PALETTE( lesbian) {
-  0,        169, 136, 25,    /* at index 0, blue(0,0,0) */
-  5,        182,  155, 25,    /* at index 0, blue(0,0,0) */
-  10,          239, 231, 40,  /* at index 0, blue(0,0,0) */
-  15,         169, 136, 25,  /* at index 0, blue(0,0,0) */
-  100,        221,  197, 35,   /* at index 0, blue(0,0,0) */
-  120,       221, 200, 35,    /* at index 0, green(0,0,0) */
-  140,      163, 125, 25,    /* at index 0, green(0,0,0) */
-  150,    178, 135, 24,    /* at index 0, blue(0,0,0) */
-  200,    105, 70, 13,    /* at index 0, green(0,0,0) */
-  220,     150,  50,  0,    /* at index 0, green(0,0,0) */
-  235,      139,  75, 1,    /* at index 0, desertbrown(0,0,0) */
-  240,      188, 144, 10,       /* at index 0, desertbrown(0,0,0) */       // last entry must be for index 255
-  245,   77, 74, 12, /* at index 255, desertbright(255,255,255) */
-  255,    66, 54, 10 /* at index 0, blue(0,0,0) */       // last entry must be for index 255
+  0,        255, 100, 0,    /* Dark Orange*/
+  32,        255,  255, 0,    /* Light Orange */
+  64,          255, 255, 100,  /* Pumkin */
+  98,         255, 255, 255,  /* White/Cream*/
+  130,        255,  197, 255,   /* Pink */
+  162,       255, 150, 255,    /*Purple/Mauve*/
+  194,      255, 0, 255,    /* Red Pink */
+  255,    255, 0, 100,    /* Deep Pink*/
 };
 
 
@@ -94,21 +88,15 @@ DEFINE_GRADIENT_PALETTE( bisexual) {
 
 
 
-DEFINE_GRADIENT_PALETTE(pan) {
-  0,        0,  0, 0,    /* at index 0, blue(0,0,0) */
-  5,        100,  100, 100,    /* at index 0, blue(0,0,0) */
-  10,       20,  20, 20,    /* at index 0, blue(0,0,0) */
-  15,        255,  255, 255,    /* at index 0, blue(0,0,0) */
-  100,        50,  50, 50,    /* at index 0, blue(0,0,0) */
-  120,       200,  200, 200,    /* at index 0, green(0,0,0) */
-  140,       0,  0, 0,    /* at index 0, green(0,0,0) */
-  150,     20,  20,  20,    /* at index 0, blue(0,0,0) */
-  200,     200,  200,  200,    /* at index 0, green(0,0,0) */
-  220,     150,  150,  150,    /* at index 0, green(0,0,0) */
-  235,        10,  10, 10,    /* at index 0, desertbrown(0,0,0) */
-  240,    255,  255, 255,       /* at index 0, desertbrown(0,0,0) */       // last entry must be for index 255
-  245,    200,  200,    200, /* at index 255, desertbright(255,255,255) */
-  255,    1,  1,   1   /* at index 0, blue(0,0,0) */       // last entry must be for index 255
+DEFINE_GRADIENT_PALETTE(enby) {
+  0,        230,  255, 0,    /* Yellow*/
+  32,       255,  255, 255,    /* White*/
+  64,        255,  0, 255,    /* Purple */
+  98,        0,  0, 0,    /*Black */
+  130,       255,  255, 255,    /* White*/
+  162,       255,  0, 255,    /* Purple */
+  194,     230,  255,  0,    /* Yellow */
+  255,     0,  0,  0,    /* Black*/
 };
 
 
@@ -289,7 +277,7 @@ CRGBPalette16 select_flag() {
       //      Serial.println("Earth");
       break;
     case 4:
-      outputPalette = pan;
+      outputPalette = enby;
       //      Serial.println("The Moon");
       break;
     case 5:
@@ -328,7 +316,7 @@ CRGBPalette16 select_flag() {
 
   if (current_flag >= 12) {
     current_flag = 0;
-   // solar_system_mode = false;    // Once we have finished our flight around the solar system, return to colour palletes
+    // solar_system_mode = false;    // Once we have finished our flight around the solar system, return to colour palletes
     //    Serial.println("Colour Palette Mode");
 
   }
