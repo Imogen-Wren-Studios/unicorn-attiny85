@@ -18,20 +18,13 @@
 
 
 DEFINE_GRADIENT_PALETTE( pride) {
-  0,        255, 255, 255,    /* at index 0, blue(0,0,0) */
-  5,         255, 255, 255,     /* at index 0, blue(0,0,0) */
-  10,           255, 255, 0,    /* at index 0, blue(0,0,0) */
-  15,         255, 100, 0,    /* at index 0, blue(0,0,0) */
-  100,         255, 255, 0,     /* at index 0, blue(0,0,0) */
-  120,        255, 255, 255,      /* at index 0, green(0,0,0) */
-  140,      255, 100, 100,      /* at index 0, green(0,0,0) */
-  150,     255, 255, 0,     /* at index 0, blue(0,0,0) */
-  200,     255, 100, 0,      /* at index 0, green(0,0,0) */
-  220,      255, 255, 255,      /* at index 0, green(0,0,0) */
-  235,       255, 255, 255,      /* at index 0, desertbrown(0,0,0) */
-  240,      255, 255, 0,         /* at index 0, desertbrown(0,0,0) */       // last entry must be for index 255
-  245,    255, 200, 0,   /* at index 255, desertbright(255,255,255) */
-  255,     255, 255, 255   /* at index 0, blue(0,0,0) */       // last entry must be for index 255
+  0,        255, 0, 0,    /*Red) */
+  40,         255, 100, 0,     /* Orange */
+  80,           255, 255, 0,    /* Yellow */
+  120,         0, 255, 0,    /* Green*/
+  160,        0, 255, 255,     /* teal */
+  200,        0, 0 255,      /* Blue */
+  255,        255, 0, 255,      /* Purple */
 };
 
 
@@ -40,7 +33,7 @@ DEFINE_GRADIENT_PALETTE( lesbian) {
   32,        255,  255, 0,    /* Light Orange */
   64,          255, 255, 100,  /* Pumkin */
   98,         255, 255, 255,  /* White/Cream*/
-  130,        255,  197, 255,   /* Pink */
+  130,        255,  197, 255,   /* Pink */8
   162,       255, 150, 255,    /*Purple/Mauve*/
   194,      255, 0, 255,    /* Red Pink */
   255,    255, 0, 100,    /* Deep Pink*/
@@ -68,22 +61,12 @@ DEFINE_GRADIENT_PALETTE( gay) {
 
 
 DEFINE_GRADIENT_PALETTE( bisexual) {
-  0,        19, 21, 255,    /* at index 0, blue(0,0,0) */
-  7,       20, 100, 255,    /* at index 0, blue(0,0,0) */
-  10,       255,  255, 255,    /* at index 0, cloud(0,0,0) */
-  13,        2, 150, 255,   /* at index 0, blue(0,0,0) */
-  60,       130, 255, 0,    /* at index 0, landgreen(0,0,0) */
-  100,       20, 255, 2,    /* at index 0, green(0,0,0) */
-  120,       10, 100, 255,    /* at index 0, blue(0,0,0) */
-  135,       70, 255, 5,    /* at index 0, landgreen(0,0,0) */
-  145,       230, 235, 20,    /* at index 0, desert(0,0,0) */
-  170,     235, 158, 5,    /* at index 0, orangedesert(0,0,0) */
-  190,       70, 255, 5,    /* at index 0, landgreen(0,0,0) */
-  213,    24, 30, 234,    /* at index 0, dark sea(0,0,0) */
-  224,     0, 0, 0,    /* at index 0, Night(0,0,0) */
-  233,     50, 50, 0,       /* at index 0, Lights @ Night(0,0,0) */      // last entry must be for index 255
-  240,    0, 0, 20, /* at index 255, ight(255,255,255) */
-  255,   0, 21, 40,   /* at index 0, sunrise(0,0,0) */       // last entry must be for index 255
+  0,        255, 0, 100,    /* RedPink */
+  130,        255, 0, 150,    /* RedPink */
+  120,       255, 0, 255,    /* Purple*/
+  140,       150, 0, 255,    /*Bluepurple */
+  255,       100, 0, 255,    /*Bluepurple */
+
 };
 
 
@@ -103,43 +86,21 @@ DEFINE_GRADIENT_PALETTE(enby) {
 
 // Would prefer an HSV way of specifying this.
 DEFINE_GRADIENT_PALETTE( trans) {
-  0,        255, 140, 0,    /* at index 0, blue(0,0,0) */
-  8,        240,  20, 0,    /* at index 0, blue(0,0,0) */
-  10,       200,  170, 100,    /* at index 0, blue(0,0,0) */
-  13,       200,  100, 0,    /* at index 0, blue(0,0,0) */
-  100,        190,  50, 0,    /* at index 0, blue(0,0,0) */
-  120,       240,  50, 0,    /* at index 0, green(0,0,0) */
-  140,      190,  64, 0,    /* at index 0, green(0,0,0) */
-  150,     230,  30,  0,    /* at index 0, blue(0,0,0) */
-  200,     255, 23,  0,    /* at index 0, green(0,0,0) */
-  210,     100,  50,  0,    /* at index 0, green(0,0,0) */
-  235,      200,  40, 1,    /* at index 0, desertbrown(0,0,0) */
-  240,        0,  0, 0,       /* at index 0, desertbrown(0,0,0) */       // last entry must be for index 255
-  245,    145,  40,    0, /* at index 255, desertbright(255,255,255) */
-  255,    130,  50,   0   /* at index 0, blue(0,0,0) */       // last entry must be for index 255
+  0,        0, 40, 255,    /* Baby Blue */
+  8,        200, 20, 150,   /* Baby Pink */
+  10,       255,  255, 255,    /* White */
+  13,       200, 20, 150,    /* Baby Pink*/
+  255,      0, 40, 255,     /* Baby Blue */
 };
 
 
 
 
-DEFINE_GRADIENT_PALETTE(ace) {
-  0,         140,   87,    20,     // mud   0
-  40,        180,    134,    20 ,    //gravel 1
-  42,         220,    140,   20 ,      // dirty orange (very thin) 2
-  45,        224,   194,   20,    //tan_suit 3
-  70,        205,   191,    40,      //sand 4
-  73,       130,    127,     125,     // clouds or grey_clouds (very thin) 5
-  78,       255,    106,     2,      // reddish_dust (medium thin) 6
-  90,       250,    160,     13,    // dirty_orange (thicc) 7
-  140,       228,   181,    20,     //sand (thin) 8
-  160,       200,   87,     20,       //mud (thin) 9
-  180,      223,   140,   20,      // tan_suit (mid thin) 10
-  190,       255,   10,     0,      // red_dot (thin) 11
-  194,      150,    100,   2,       // gravel  (thick) 13
-  197,      137,    135,     120,     // clouds (thin) 12
-  202,        202,  140,   20,        // tan suit 14
-  255,      131,   87,    20         // mud (thin) 15
-
+DEFINE_GRADIENT_PALETTE(ace) {   // Black, Grey, White, Purple
+  0,         0,   0,    0,     // Black
+  100,         20,   20,    20,     // Grey
+  150,         255,   255,    255,     // White
+  255,      131,   0,   255         // Purple
 };
 
 
