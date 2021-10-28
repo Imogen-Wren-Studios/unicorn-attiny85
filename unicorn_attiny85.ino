@@ -189,7 +189,7 @@ void normalMode() {
 
 
 void angryMode() {
-  updates_per_second = 200;
+  updates_per_second = 150;
 
   animationTriggered = true;
 

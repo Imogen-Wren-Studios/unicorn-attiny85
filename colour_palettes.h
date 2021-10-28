@@ -107,8 +107,8 @@ DEFINE_GRADIENT_PALETTE( angry_red ) {
   110,       255,  0, 0,    /* at index 0, orange(0,0,0) */
   120,       255,  100, 10,    /* at index 0, orange(0,0,0) */
   130,       255,  0, 5,    /* at index 0, orange(0,0,0) */
-  150,     255,  150,  5,    /* at index 0, orange(0,0,0) */
-  170,    255,  40,  10, /* at index 255, white(255,255,255) */
+  150,     255,  100,  20,    /* at index 0, orange(0,0,0) */
+  170,    255,  0,  40, /* at index 255, white(255,255,255) */
   190,    255,  0,  1, /* at index 255, white(255,255,255) */
   255,    255,  50, 0   /* at index 0, orange(0,0,0) */       // last entry must be for index 255
 };
@@ -162,7 +162,7 @@ CRGBPalette16 select_palette(byte number) {
       //    Serial.println("Bi");
       break;
     case 4:
-      outputPalette = orange_white;
+      outputPalette = ace;
       //     Serial.println("Orange/White");
       break;
     case 5:
@@ -170,7 +170,7 @@ CRGBPalette16 select_palette(byte number) {
       //     Serial.println("blue_white");
       break;
     case 6:
-      outputPalette = green_white;
+      outputPalette = bisexual;
       //      Serial.println("Green/White");
       break;
     case 7:
@@ -198,7 +198,7 @@ CRGBPalette16 select_palette(byte number) {
       //     Serial.println("Lava Colours");
       break;
     case 13:
-      outputPalette = returnRandomPalette();
+      outputPalette = trans;
       //     Serial.println("Ocean Colours");
       break;
     case 14:

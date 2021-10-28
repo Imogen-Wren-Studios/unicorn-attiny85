@@ -23,8 +23,8 @@ DEFINE_GRADIENT_PALETTE( pride) {
   80,           255, 255, 0,    /* Yellow */
   120,         0, 255, 0,    /* Green*/
   160,        0, 255, 255,     /* teal */
-  200,        0, 0 255,      /* Blue */
-  255,        255, 0, 255,      /* Purple */
+  200,        0, 0, 255,      /* Blue */
+  255,        255, 0, 255      /* Purple */
 };
 
 
@@ -33,13 +33,13 @@ DEFINE_GRADIENT_PALETTE( lesbian) {
   32,        255,  255, 0,    /* Light Orange */
   64,          255, 255, 100,  /* Pumkin */
   98,         255, 255, 255,  /* White/Cream*/
-  130,        255,  197, 255,   /* Pink */8
+  130,        255,  197, 255,   /* Pink */
   162,       255, 150, 255,    /*Purple/Mauve*/
   194,      255, 0, 255,    /* Red Pink */
-  255,    255, 0, 100,    /* Deep Pink*/
+  255,    255, 0, 100    /* Deep Pink*/
 };
 
-
+// Not used yet
 DEFINE_GRADIENT_PALETTE( gay) {
   0,        190, 190, 120,    /* at index 0, blue(0,0,0) */
   5,        230,  200, 70,    /* at index 0, blue(0,0,0) */
@@ -65,7 +65,7 @@ DEFINE_GRADIENT_PALETTE( bisexual) {
   130,        255, 0, 150,    /* RedPink */
   120,       255, 0, 255,    /* Purple*/
   140,       150, 0, 255,    /*Bluepurple */
-  255,       100, 0, 255,    /*Bluepurple */
+  255,       100, 0, 255    /*Bluepurple */
 
 };
 
@@ -79,7 +79,7 @@ DEFINE_GRADIENT_PALETTE(enby) {
   130,       255,  255, 255,    /* White*/
   162,       255,  0, 255,    /* Purple */
   194,     230,  255,  0,    /* Yellow */
-  255,     0,  0,  0,    /* Black*/
+  255,     0,  0,  0    /* Black*/
 };
 
 
@@ -90,7 +90,7 @@ DEFINE_GRADIENT_PALETTE( trans) {
   8,        200, 20, 150,   /* Baby Pink */
   10,       255,  255, 255,    /* White */
   13,       200, 20, 150,    /* Baby Pink*/
-  255,      0, 40, 255,     /* Baby Blue */
+  255,      0, 40, 255     /* Baby Blue */
 };
 
 
