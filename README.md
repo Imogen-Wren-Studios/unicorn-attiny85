@@ -6,6 +6,11 @@ Pallet Shifting effects designed for maximum portability, using AtTiny85.
 
 Useful for cosplay, costumes and wearables.
 
+## Circuit Layout
+
+<img width="857" alt="AtTiny85 Neopixel" src="https://user-images.githubusercontent.com/97303986/217822631-c21c6b38-cd06-4524-adf4-2426092e855c.png">
+
+
 
 ####  Reccomend using Arduino as ISP for programming & burning bootloader to AtTiny85
 
