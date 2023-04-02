@@ -1,5 +1,4 @@
 #include <FastLED.h>
-
 #include <autoDelay.h>
 
 

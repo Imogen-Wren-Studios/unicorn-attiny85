@@ -23,9 +23,5 @@ void fastled_setup(){
 //  Serial.println("Chroma Paintbrush Initialised:  Luminescence Matrix Applied.\n Starting Visual Light Imbument\n ");
 
 
-  FastLED.show();
-
-
-
-  
+  FastLED.show(); 
 }

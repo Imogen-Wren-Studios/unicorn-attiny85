@@ -1,4 +1,4 @@
-/* ) . . o o 0 0 0 0 . Planet Palettes  ) . . o o 0 0 0 0 .
+/* ) . . o o 0 0 0 0 . Pride Palettes  ) . . o o 0 0 0 0 .
 
 
 
